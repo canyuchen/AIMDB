@@ -1,0 +1,62 @@
+
+测试要求：
+
+要求进行如下21个测试
+
+选择投影
+
+  TQ1: select 1 列，1个filter, 小数据集
+  TQ2: select 2 列， 2个filter, 小数据集，其中一个filter列上有index
+  TQ3: select 1 列，1个filter, 大数据集，filter列上有index
+  TQ4: select 2 列， 2个filter, 大数据集
+  TQ5: select 2 列， 4个filter, 大数据集，其中一个filter列上有index
+
+连接
+
+  TQ6: 2个表join, 没有filter条件，没有index, 输出2列（每个表各选1列），小数据集
+  TQ7: 2个表join, 没有filter条件，有index, 输出2列（每个表各选1列），小数据集
+  TQ8: 2个表join, 没有filter条件，没有index, 输出2列（每个表各选1列），大数据集
+  TQ9: 2个表join, 没有filter条件，没有index, 输出2列（每个表各选1列），大数据集  (current 8*2)
+  TQ10: 2个表join, 没有filter条件，有index, 输出2列（每个表各选1列），大数据集
+  TQ11: 2个表join, 各有1个filter条件，没有index, 输出2列（每个表各选1列），小数据集
+  TQ12: 2个表join, 各有1个filter条件，没有index, 输出2列（每个表各选1列），大数据集
+  TQ13: 2个表join, 各有1个filter条件，有index, 输出2列（每个表各选1列），大数据集
+  TQ14: 3个表join, 各有1个filter条件，没有index, 输出3列（每个表各选1列），大数据集
+  TQ15: 4个表join, 各有1个filter条件，没有index, 输出4列（每个表各选1列），大数据集
+
+分组聚集
+
+  TQ16: TQ2基础上，加一个group by key, 一个aggregation，小数据集
+  TQ17: TQ4基础上，加一个group by key, 一个aggregation，大数据集
+  TQ18: TQ6基础上，加一个group by key, 2个aggregation，小数据集
+  TQ19: TQ8基础上，加一个group by key, 2个aggregation，大数据集
+  TQ20: TQ18基础上加一个having 条件，大数据集
+
+排序
+
+  TQ21: TQ2基础上，按1个输出列进行排序，小数据集
+  TQ22: TQ14基础上，增加一个group by key, 一个aggregation，然后按group by key排序
+
+数据集统计：
+
+小数据集：
+
+    1500    26720   239490 sf10Mt/customer.tbl
+   60175  1242812  7204075 sf10Mt/lineitem.tbl
+      25      344     2199 sf10Mt/nation.tbl
+   15000   230457  1644137 sf10Mt/orders.tbl
+    8000   169677  1153705 sf10Mt/partsupp.tbl
+    2000    35029   236074 sf10Mt/part.tbl
+       5       59      384 sf10Mt/region.tbl
+     100     1529    13695 sf10Mt/supplier.tbl
+
+大数据集：
+
+    15000    266307   2411114 sf100Mt/customer.tbl
+   600572  12401384  73646424 sf100Mt/lineitem.tbl
+       25       344      2199 sf100Mt/nation.tbl
+   150000   2306971  16743122 sf100Mt/orders.tbl
+    80000   1690981  11648193 sf100Mt/partsupp.tbl
+    20000    350553   2378643 sf100Mt/part.tbl
+        5        59       384 sf100Mt/region.tbl
+     1000     15424    138625 sf100Mt/supplier.tbl

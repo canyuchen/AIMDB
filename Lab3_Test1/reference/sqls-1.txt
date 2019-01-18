@@ -1,0 +1,49 @@
+小数据集测试：(1-2,保证容易手工检查)
+
+  (index: ps_suppkey,r_regionkey)
+  TQ1: select 1 列，1个filter, 小数据集
+    select s_name
+    from supplier
+    where s_nationkey = 18
+
+  TQ2: select 2 列， 2个filter, 小数据集，其中一个filter列上有index
+    (index: ps_suppkey)
+    select ps_partkey,ps_availqty
+    from partsupp
+    where ps_suppkey = 6 and ps_availqty < 8000
+
+  TQ6: 2个表join, 没有filter条件，没有index, 输出2列（每个表各选1列），小数据集
+    select c_name,o_totalprice
+    from customer,orders
+    where c_custkey = o_custkey
+
+  TQ7: 2个表join, 没有filter条件，有index, 输出2列（每个表各选1列），小数据集
+    (index: r_regionkey)
+    select n_name, r_name
+    from nation,region
+    where n_regionkey = r_regionkey
+
+  TQ11: 2个表join, 各有1个filter条件，没有index, 输出2列（每个表各选1列），小数据集
+    select c_name,o_totalprice
+    from customer,orders
+    where c_custkey = o_custkey and c_nationkey = 18 and o_totalprice >20000
+
+  TQ16: TQ2基础上，加一个group by key, 一个aggregation，小数据集
+    (index: suppkey)
+    select ps_partkey,sum(ps_supplycost)
+    from partsupp
+    where ps_suppkey = 6 and ps_supplycost < 2000
+    group by ps_partkey
+
+  TQ18: TQ6基础上，加一个group by key, 2个aggregation，小数据集
+    select c_name,SUM(o_totalprice),MAX(o_totalprice)
+    from customer,orders
+    where c_custkey = o_custkey
+    group by c_name
+
+  TQ21: TQ2基础上，按1个输出列进行排序，小数据集
+    (index: ps_suppkey)
+    select ps_partkey,ps_availqty
+    from partsupp
+    where ps_suppkey = 6 and ps_availqty < 8000
+    order by ps_availqty

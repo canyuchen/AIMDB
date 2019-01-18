@@ -1,0 +1,72 @@
+DATABASE	tpch_small
+	TABLE	part	ROWTABLE
+		COLUMN	p_partkey	INT32
+		COLUMN	p_name	CHARN	55
+		COLUMN	p_mfgr	CHARN	25
+		COLUMN	p_brand	CHARN	20
+		COLUMN	p_type	CHARN	30
+		COLUMN	p_size	INT32
+		COLUMN	p_container	CHARN	20
+		COLUMN	p_retailprice	FLOAT32
+		COLUMN	p_comment	CHARN	23
+	TABLE	supplier	ROWTABLE
+		COLUMN	s_suppkey	INT32
+		COLUMN	s_name	CHARN	25
+		COLUMN	s_address	CHARN	50
+		COLUMN	s_nationkey	INT32
+		COLUMN	s_phone	CHARN	16
+		COLUMN	s_acctbal	FLOAT32
+		COLUMN	s_comment	CHARN	101
+	TABLE	partsupp	ROWTABLE
+		COLUMN	ps_partkey	INT32
+		COLUMN	ps_suppkey	INT32
+		COLUMN	ps_availqty	INT32
+		COLUMN	ps_supplycost	FLOAT32
+		COLUMN	ps_comment	CHARN	200
+		INDEX	index_suppkey	HASHINDEX	ps_suppkey
+	TABLE	customer	ROWTABLE
+		COLUMN	c_custkey	INT32
+		COLUMN	c_name	CHARN	20
+		COLUMN	c_address	CHARN	50
+		COLUMN	c_nationkey	INT32
+		COLUMN	c_phone	CHARN	16
+		COLUMN	c_acctbal	FLOAT32
+		COLUMN	c_mktsegment	CHARN	20
+		COLUMN	c_comment	CHARN	200
+	TABLE	nation	ROWTABLE
+		COLUMN	n_nationkey	INT32
+		COLUMN	n_name	CHARN	25
+		COLUMN	n_regionkey	INT32
+		COLUMN	n_comment	CHARN	152
+	TABLE	lineitem	ROWTABLE
+		COLUMN	l_orderkey	INT32
+		COLUMN	l_partkey	INT32
+		COLUMN	l_suppkey	INT32
+		COLUMN	l_linenumber	INT32
+		COLUMN	l_quantity	INT32
+		COLUMN	l_extendedprice	FLOAT32
+		COLUMN	l_discount	FLOAT32
+		COLUMN	l_tax	FLOAT32
+		COLUMN	l_returnflag	CHARN	2
+		COLUMN	l_linestatus	CHARN	2
+		COLUMN	l_shipdate	DATE
+		COLUMN	l_commitdate	DATE
+		COLUMN	l_receiptdate	DATE
+		COLUMN	l_shipinstruct	CHARN	30
+		COLUMN	l_shipmode	CHARN	20
+		COLUMN	l_comment	CHARN	90
+	TABLE	region	ROWTABLE
+		COLUMN	r_regionkey	INT32
+		COLUMN	r_name	CHARN	25
+		COLUMN	r_comment	CHARN	152
+		INDEX	index_region	HASHINDEX	r_regionkey
+	TABLE	orders	ROWTABLE
+		COLUMN	o_orderkey	INT32
+		COLUMN	o_custkey	INT32
+		COLUMN	o_orderstatus	CHARN	2
+		COLUMN	o_totalprice	FLOAT32
+		COLUMN	o_orderdate	DATE
+		COLUMN	o_orderpriority	CHARN	16
+		COLUMN	o_clerk	CHARN	20
+		COLUMN	o_shippriority	INT32
+		COLUMN	o_comment	CHARN	90
