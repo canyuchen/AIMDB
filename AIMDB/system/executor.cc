@@ -1,3 +1,15 @@
+/**
+ * @file    executor.h
+ * @author  liugang(liugang@ict.ac.cn)
+ * @author  harvardchen97@gmail.com
+ * @version 0.1
+ *
+ * @section DESCRIPTION
+ *  
+ * definition of executor
+ *
+ */
+
 #include "executor.h"
 using namespace std;
 int64_t project_tabout_id = 456;
