@@ -73,7 +73,7 @@
         * int64_t alloc(char *&p, int64_t size);
         * int64_t free(char *p, int64_t size);
         * int print(void);
-    ![cpu-1](/resources/db-2.png)
+    ![cpu-1](/resources/db-3.png)
 
 ## Input & Output :
 
