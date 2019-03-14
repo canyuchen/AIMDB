@@ -57,7 +57,7 @@
         * bool initDatabase(int64_t d_id);
         * Object *getObjById(int64_t o_id);
         * Object *getObjByName(char *o_name);
-* **hash** :
+* **Hash** :
     * hash interface :
         * bool set_ls(void *i_data1, void *i_data2, void *info);
         * bool set_ls(void *i_data1[], void *i_data2[], void *info);
@@ -68,6 +68,12 @@
         * bool del(void *i_data);
         * bool del(void *i_data[]);
     ![cpu-1](/resources/db-1.png)
+* **Memory Management** :
+    * memory management interface :
+        * int64_t alloc(char *&p, int64_t size);
+        * int64_t free(char *p, int64_t size);
+        * int print(void);
+    ![cpu-1](/resources/db-2.png)
 
 ## Input & Output :
 
